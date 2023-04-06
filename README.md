@@ -8,5 +8,6 @@
 5. Create superuser `python3 manage.py createsuperuser`
 
 ## Access
-1. Access Admin panel `http://localhost:8000/admin`
-2. Access system `http://localhost:8000/`
+1. Start server `python3 manage.py runserver`
+2. Access Admin panel `http://localhost:8000/admin`
+3. Access system `http://localhost:8000/`
