@@ -3,8 +3,9 @@
 ## Set Up
 - Install python 3
 - Install django
-- Install django-environ `python3 -m pip install django-environ`
-- Create .env file with the following configuration
+- Install django-environ `pip install django-environ`
+- Install mysqlclient `pip install mysqlclient`
+- Create .env file next to settings.py file with the following configuration
   ```
         SECRET_KEY=secret_key
         DEBUG=True
