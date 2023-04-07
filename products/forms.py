@@ -6,7 +6,7 @@ class QuantityTypeForm(forms.Form):
 
 
 class ProductForm(forms.Form):
-    name = forms.CharField(max_length=20)
+    name = forms.CharField(max_length=30)
     price = forms.DecimalField(max_digits=10,decimal_places=2)
     quantity_type = forms.IntegerField()
     quantity = forms.DecimalField()

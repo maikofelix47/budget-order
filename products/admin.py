@@ -7,7 +7,7 @@ class QuantyTypeAdmin(admin.ModelAdmin):
     list_display = ('name','units')
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name','price','quantity_type','quantity','store','voided')
+    list_display = ('name','price','quantity_type','quantity','store')
 
 
 admin.site.register(QuantityType,QuantyTypeAdmin)
