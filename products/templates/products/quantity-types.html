@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'products/products.css' %}"/>
+{% endblock %}
+
+{% block title %} Quantity Types {% endblock %}
+
+{% block content %}
+
+
+<table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    {% for qt in quantity_types %}
+    <tr>
+       <td><a href="{% url 'quantity-type' qt.id %}">{{ qt.name }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

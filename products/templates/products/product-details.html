@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'products/products.css' %}"/>
+{% endblock %}
+
+{% block title %} Product {% endblock %}
+
+{% block content %}
+
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity Type</th>
+      <th>Quantity</th>
+      <th>Store</th>
+    </tr>
+    <tr>
+       <td>{{ product.name }}</a></td>
+       <td>{{ product.price }}</td>
+       <td>{{ product.quantity_type }}</td>
+       <td>{{ product.quantity }}</td>
+       <td>{{ product.store }}</td>
+    </tr>
+</ul>
+
+{% endblock %}

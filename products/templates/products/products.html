@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'products/products.css' %}"/>
+{% endblock %}
+
+{% block title %} Products {% endblock %}
+
+{% block content %}
+
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Store</th>
+    </tr>
+    {% for p in products %}
+    <tr>
+       <td><a href="{% url 'product' p.id %}">{{ p.name }}</a></td>
+       <td>{{ p.store }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

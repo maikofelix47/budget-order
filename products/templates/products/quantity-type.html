@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'products/products.css' %}"/>
+{% endblock %}
+
+{% block title %} Quantity Type {% endblock %}
+
+{% block content %}
+
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Units</th>
+    </tr>
+    <tr>
+       <td>{{ quantity_type.name }}</a></td>
+       <td>{{ quantity_type.units }}</td>
+    </tr>
+</table>
+
+{% endblock %}

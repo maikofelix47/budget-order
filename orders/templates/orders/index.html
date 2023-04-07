@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'orders/orders.css' %}"/>
+{% endblock %}
+
+{% block title %} Orders {% endblock %}
+
+{% block content %}
+
+<table>
+    <tr>
+      <th>Order</th>
+      <th>Date</th>
+    </tr>
+    {% for o in orders %}
+    <tr>
+       <td><a href="{% url 'order' o.id %}">{{ o.id }}</a></td>
+       <td>{{ o.date_created }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

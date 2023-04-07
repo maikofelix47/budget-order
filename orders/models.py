@@ -18,6 +18,9 @@ class OrderDetails(models.Model):
     quantity = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(100)])
     date_created = models.DateTimeField(auto_now=True)
 
+    def __str__(self) -> str:
+        return f"{self.order},{self.product.name}"
+
     class Meta:
         verbose_name_plural = 'OrderDetails'
 
