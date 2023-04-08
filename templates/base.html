@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block css %}
     {% endblock %}
+    <link rel="stylesheet" href="{% static 'base.css' %}"/>
     <title>{% block page_title %} Budget Order {% endblock %}</title>
 </head>
 <body>
+    <header>
+        <nav class="nav-bar">
+            <ul class="navbar-ul">
+                <li class="navbar-li"><a class="navbar-link" href="{% url 'index' %}">Home</a></li>
+                <li class="navbar-li"><a class="navbar-link" href="{% url 'products' %}">Products</a></li>
+                <li class="navbar-li"><a class="navbar-link" href="{% url 'quantity-types' %}">Quantity Types</a></li>
+                <li class="navbar-li"><a class="navbar-link" href="{% url 'orders' %}">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
     {% block content %}
     {% endblock %}
 </body>
