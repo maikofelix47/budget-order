@@ -7,3 +7,10 @@ body{
 .budget-row{
     margin-bottom: 5px;
 }
+.bo-title{
+font-size: 1rem
+}
+.intro-divider{
+    width: 40%;
+    text-align: left;
+}

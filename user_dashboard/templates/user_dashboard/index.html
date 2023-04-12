@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Dashboard
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'user_dashboard/user-dashboard.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="row justify-content-md-center dashboard-row">
+    <div class="col col-lg-2 col-md-2 col-sm-2">
+        <div class="card dashboard-card">
+            <div class="card-body">
+              <p class="card-text">Orders</p>
+              <p>{{ total_orders }}</p>
+            </div>
+          </div>
+    </div>
+    <div class="col col-lg-2 col-md-2 col-sm-2">
+        <div class="card dashboard-card">
+            <div class="card-body">
+              <p class="card-text">Products</p>
+              <p>{{ total_products }}</p>
+            </div>
+          </div>
+    </div>
+    <div class="col col-lg-2 col-md-2 col-sm-2">
+        <div class="card dashboard-card">
+            <div class="card-body">
+              <p class="card-text">Stores</p>
+              <p>{{ total_stores }}</p>
+            </div>
+          </div>
+    </div>
+    <div class="col col-lg-2 col-md-2 col-sm-2">
+        <div class="card dashboard-card">
+            <div class="card-body">
+              <p class="card-text">Quantity Types</p>
+              <p>{{ total_qt }}</p>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="row justify-content-md-center dashboard-row">
+    <div class="col col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <h5 class="bo-title">Monthly Expenditure(Last 3 months)</h5>
+        <hr class="intro-divider" />
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Expenditure</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for me in monthly_expenditure %}
+                <tr>
+                  <td>
+                    {{ me.month }}
+                  </td>
+                  <td>{{ me.total_expenditure }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+{% endblock %}
