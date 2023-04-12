@@ -10,7 +10,7 @@
 
 {% block content %}
 <div class="row justify-content-md-center budget-row">
-   <div class="col col-lg-8">
+   <div class="col col-lg-10 col-sm-10 col-md-10 col-xs-12">
       <form action="/orders/create-order-item/" method="POST">
           {% csrf_token %}
           <div class="form-group">
@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="row justify-content-md-center budget-row">
-   <div class="col col-lg-8">
+   <div class="col col-lg-10 col-sm-10 col-md-10 col-xs-12">
      <table class="table table-bordered">
        <thead>
          <tr>
@@ -31,18 +31,22 @@
             <th>Store</th>
             <th>Quantity</th>
             <th>Unit Price</th>
+            <th>Dispatch</th>
          </tr>
       </thead>
       <tbody>
          {% for order in order_details %}
          <tr>
-            <td>{{ order.order.id }}</a></td>
+            <td>ORD-{{ order.order.id }}</a></td>
             <td>{{ order.date_created }}</td>
             <td><a class="row-link" href="{% url 'product' order.product.id %}">{{ order.product.name }}</a></td>
             <td><a class="row-link" href="{% url 'rider-details' order.rider.id %}">{{ order.rider.id }}</a></td>
             <td>{{ order.product.store.name }}</td>
             <td>{{ order.quantity }}</td>
             <td>{{ order.product.price }}</td>
+            <td>
+               <a class="btn btn-success">Dispatch</a>
+            </td>
          </tr>
          {% endfor %}
          <tr>
@@ -52,6 +56,7 @@
             <td></td>
             <td></td>
             <td><b>{{ order_total.total_cost }}</b></td>
+            <td></td>
          </tr>
       </tbody>
      </table>

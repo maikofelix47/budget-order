@@ -23,7 +23,7 @@
       <tbody>
         {% for o in orders %}
         <tr>
-          <td><a class="row-link" href="{% url 'order' o.id %}">{{ o.id }}</a></td>
+          <td><a class="row-link" href="{% url 'order' o.id %}">ORD-{{ o.id }}</a></td>
           <td>{{ o.date_created }}</td>
         </tr>
         {% endfor %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+Dispatch
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'dispatch/dispatch.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-md-center budget-row">
+    <div class="col col-lg-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date Dispatched</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for d in dispatch %}
+            <tr>
+              <td><a class="row-link" href="{% url 'dispatch-details' d.id %}">{{ d.id }}</a></td>
+              <td>{{ d.date_dispatched }}</td>
+              <td>{{ d.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock %}

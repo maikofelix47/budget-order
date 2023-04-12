@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+Dispatch Details
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'dispatch/dispatch.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-md-center budget-row">
+    <div class="col col-lg-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date Dispatched</th>
+            <th>Order No</th>
+            <th>Rider</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>{{ dispatch.id }}</td>
+              <td>{{ dispatch.date_dispatched }}</td>
+              <td><a class="row-link" href="{% url 'order'  dispatch.order_detail.order_id %}">ORD-{{ dispatch.order_detail.order_id }}</a></td>
+              <td><a class="row-link" href="{% url 'rider-details' dispatch.order_detail.rider_id  %}">{{ dispatch.order_detail.rider_id }}</a></td>
+              <td>{{ dispatch.status }}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock %}
