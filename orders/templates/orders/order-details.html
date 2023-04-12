@@ -27,6 +27,7 @@
             <th>Order</th>
             <th>Date</th>
             <th>Product</th>
+            <th>Rider</th>
             <th>Store</th>
             <th>Quantity</th>
             <th>Unit Price</th>
@@ -38,6 +39,7 @@
             <td>{{ order.order.id }}</a></td>
             <td>{{ order.date_created }}</td>
             <td><a class="row-link" href="{% url 'product' order.product.id %}">{{ order.product.name }}</a></td>
+            <td><a class="row-link" href="{% url 'rider-details' order.rider.id %}">{{ order.rider.id }}</a></td>
             <td>{{ order.product.store.name }}</td>
             <td>{{ order.quantity }}</td>
             <td>{{ order.product.price }}</td>
