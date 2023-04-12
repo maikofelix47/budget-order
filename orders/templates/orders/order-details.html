@@ -9,34 +9,41 @@
 {% block title %} Order Details {% endblock %}
 
 {% block content %}
-
-<table>
-    <tr>
-      <th>Order</th>
-      <th>Date</th>
-      <th>Product</th>
-      <th>Store</th>
-      <th>Quantity</th>
-      <th>Unit Price</th>
-    </tr>
-    {% for order in order_details %}
-    <tr>
-       <td>{{ order.order.id }}</a></td>
-       <td>{{ order.date_created }}</td>
-       <td>{{ order.product.name }}</td>
-       <td>{{ order.product.store.name }}</td>
-       <td>{{ order.quantity }}</td>
-       <td>{{ order.product.price }}</td>
-    </tr>
-    {% endfor %}
-    <tr>
-      <td>Totals</a></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><b>{{ order_total.total_cost }}</b></td>
-   </tr>
-</table>
+<div class="row justify-content-md-center">
+   <div class="col col-lg-8">
+     <table class="table table-bordered">
+       <thead>
+         <tr>
+            <th>Order</th>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Store</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for order in order_details %}
+         <tr>
+            <td>{{ order.order.id }}</a></td>
+            <td>{{ order.date_created }}</td>
+            <td><a class="row-link" href="{% url 'product' order.product.id %}">{{ order.product.name }}</a></td>
+            <td>{{ order.product.store.name }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.product.price }}</td>
+         </tr>
+         {% endfor %}
+         <tr>
+            <td>Totals</a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>{{ order_total.total_cost }}</b></td>
+         </tr>
+      </tbody>
+     </table>
+   </div>
+</div>
 
 {% endblock %}

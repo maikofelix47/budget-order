@@ -1,28 +1,6 @@
-.nav-bar{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    border: 1px solid #dddddd;
-    margin-bottom: 10px;
+body{
+    font-family: 'Raleway', sans-serif;
 }
-.navbar-ul{
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-}
-.navbar-li{
-    box-sizing: border-box;
-    line-height: 24px;
-    list-style-type: none;
-}
-.navbar-link{
-    text-decoration: none;
-    display: block;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-    padding: 10px 15px;
-}
-.navbar-link:hover{
-    cursor: pointer;
+#content{
+    padding-top: 50px;
 }

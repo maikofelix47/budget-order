@@ -1,26 +1,29 @@
-{% extends 'base.html' %}
-{% load static  %}
+{% extends 'base.html' %} {% load static %} {% block title %} Products {%
+endblock %} {% block css %}
+<link rel="stylesheet" href="{% static 'products/products.css' %}" />
+{% endblock %} {% block content %}
 
-
-{% block css %}
-<link rel="stylesheet" href="{% static 'products/products.css' %}"/>
-{% endblock %}
-
-{% block title %} Products {% endblock %}
-
-{% block content %}
-
-<table>
-    <tr>
-      <th>Name</th>
-      <th>Store</th>
-    </tr>
-    {% for p in products %}
-    <tr>
-       <td><a href="{% url 'product' p.id %}">{{ p.name }}</a></td>
-       <td>{{ p.store }}</td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="row justify-content-md-center">
+  <div class="col col-lg-8">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Store</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in products %}
+        <tr>
+          <td>
+            <a href="{% url 'product' p.id %}" class="row-link">{{ p.name }}</a>
+          </td>
+          <td>{{ p.store }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
 
 {% endblock %}
