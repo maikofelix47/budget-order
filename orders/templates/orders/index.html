@@ -1,7 +1,17 @@
 {% extends 'base.html' %} {% load static %} {% block css %}
 <link rel="stylesheet" href="{% static 'orders/orders.css' %}" />
 {% endblock %} {% block title %} Orders {% endblock %} {% block content %}
-<div class="row justify-content-md-center">
+<div class="row justify-content-md-center budget-row">
+  <div class="col col-lg-8">
+    <form action="/orders/create-order/" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> Create Order</button>
+    </form>
+  </div>
+</div>
+<div class="row justify-content-md-center budget-row">
   <div class="col col-lg-8">
     <table class="table table-bordered">
       <thead>
