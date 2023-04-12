@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+Rider Details
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'riders/riders.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-md-center budget-row">
+    <div class="col col-lg-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone No</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ rider.id }}</td>
+            <td>{{ rider.first_name }}</td>
+            <td>{{ rider.last_name }}</td>
+            <td>{{ rider.phone_no }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock %}

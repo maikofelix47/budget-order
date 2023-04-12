@@ -3,6 +3,7 @@ from django.shortcuts import render
 from orders.models import Order,OrderDetails
 from products.models import Product, QuantityType
 from stores.models import Store
+from riders.models import Rider
 
 
 # Create your views here.
@@ -12,12 +13,14 @@ def user_dashboard(request):
     total_products = Product.objects.count()
     total_stores = Store.objects.count()
     total_qt = QuantityType.objects.count()
+    total_riders = Rider.objects.count()
     monthly_expenditure = get_last_six_months_monthly_expenditure()
     return render(request,'user_dashboard/index.html',{
          'total_orders': total_orders,
          'total_products': total_products,
          'total_stores': total_stores,
          'total_qt': total_qt,
+         'total_riders': total_riders,
          'monthly_expenditure': monthly_expenditure
     })
 

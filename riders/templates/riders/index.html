@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}
+Riders
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'riders/riders.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-md-center budget-row">
+    <div class="col col-lg-8">
+           <a class="btn btn-primary" href="{% url 'add-rider' %}"><i class="bi bi-file-earmark-plus"></i> Add Rider</a>
+     </div>
+ </div>
+<div class="row justify-content-md-center budget-row">
+    <div class="col col-lg-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone No</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in riders %}
+          <tr>
+            <td><a class="row-link" href="{% url 'rider-details' r.id %}">{{ r.id }}</a></td>
+            <td>{{ r.first_name }}</td>
+            <td>{{ r.last_name }}</td>
+            <td>{{ r.phone_no }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+{% endblock %}
