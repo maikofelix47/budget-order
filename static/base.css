@@ -1,14 +1,20 @@
 body{
     font-family: 'Raleway', sans-serif;
+    background-color: #fbfbfb;
 }
 #content{
-    padding-top: 50px;
+    padding: 50px 50px;
+    background-color: #FFF;
+    min-height: 600px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.06);
 }
 .budget-row{
     margin-bottom: 5px;
 }
 .bo-title{
-font-size: 1rem
+font-size: 1rem;
+color: #0D6EFD;
 }
 .intro-divider{
     width: 40%;

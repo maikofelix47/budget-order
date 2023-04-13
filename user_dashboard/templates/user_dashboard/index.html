@@ -12,7 +12,7 @@
         <div class="card dashboard-card">
             <div class="card-body">
               <p class="card-text">Orders</p>
-              <p>{{ total_orders }}</p>
+              <h2 class="card-count">{{ total_orders }}</h2>
             </div>
           </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="card dashboard-card">
             <div class="card-body">
               <p class="card-text">Products</p>
-              <p>{{ total_products }}</p>
+              <h2 class="card-count">{{ total_products }}</h2>
             </div>
           </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="card dashboard-card">
             <div class="card-body">
               <p class="card-text">Stores</p>
-              <p>{{ total_stores }}</p>
+              <h2 class="card-count">{{ total_stores }}</h2>
             </div>
           </div>
     </div>
@@ -36,7 +36,7 @@
         <div class="card dashboard-card">
             <div class="card-body">
               <p class="card-text">Quantity Types</p>
-              <p>{{ total_qt }}</p>
+              <h2 class="card-count">{{ total_qt }}</h2>
             </div>
           </div>
     </div>
@@ -44,14 +44,22 @@
         <div class="card dashboard-card">
             <div class="card-body">
               <p class="card-text">Riders</p>
-              <p>{{ total_riders }}</p>
+              <h2 class="card-count">{{ total_riders }}</h2>
             </div>
           </div>
     </div>
+    <div class="col col-lg-2 col-md-2 col-sm-2">
+      <div class="card dashboard-card">
+          <div class="card-body">
+            <p class="card-text">Messages</p>
+            <h2 class="card-count">{{ total_messages }}</h2>
+          </div>
+        </div>
+  </div>
 </div>
 <div class="row justify-content-md-center dashboard-row">
     <div class="col col-lg-8 col-md-8 col-sm-8 col-xs-8">
-        <h5 class="bo-title">Monthly Expenditure(Last 3 months)</h5>
+        <h5 class="bo-title">Monthly Expenditure (Last 3 months) </h5>
         <hr class="intro-divider" />
         <table class="table table-bordered">
             <thead>

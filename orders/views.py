@@ -4,6 +4,7 @@ from django.views.generic.edit import CreateView
 from django.db.models import Sum
 from .models import Order,OrderDetails
 from .forms import OrderForm, OrderDetailsForm
+from dispatch.models import Dispatch
 
 # Create your views here.
 class OrdersView(ListView):
@@ -13,6 +14,7 @@ class OrdersView(ListView):
 
 def order_details(request,pk):
     order_detail = OrderDetails.objects.filter(order_id=pk)
+    dispatch_details = Dispatch.objects.filter(order_id = pk)
     try:
         order_total = order_detail.raw("""SELECT 
                 SUM(od.quantity * p.price) as total_cost, 
@@ -24,13 +26,16 @@ def order_details(request,pk):
         group by od.order_id;
         """,[pk])
         order_cost = order_total[0]
+        dispatch_data = dispatch_details[0]
     except:
         order_cost = 0
+        dispatch_data = []
     
     return render(request,'orders/order-details.html',{
         'order_details': order_detail,
         'order_total': order_cost,
-        'order_id': pk
+        'order_id': pk,
+        'dispatch_details': dispatch_data
     })
 
 class CreateOrderView(CreateView):

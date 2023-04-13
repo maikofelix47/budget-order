@@ -9,4 +9,4 @@ class Dispatch(models.Model):
     date_dispatched = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"{self.id},{self.date_dispatched},{self.order}"
+        return f"{self.id},{self.date_dispatched},{self.order},{self.status}"

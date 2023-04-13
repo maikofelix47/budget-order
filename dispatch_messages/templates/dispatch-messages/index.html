@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} 
+Dispatch Messages
+{% endblock %} 
+{% block css %}
+<link rel="stylesheet" href="{% static 'dispatch-messages/messages.css' %}" />
+{% endblock %} 
+{% block content %}
+<div class="row justify-content-md-center">
+  <div class="col col-lg-8">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Message</th>
+          <th>Recepient</th>
+          <th>Order No</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for m in dispatch_messages %}
+          <tr>
+            <td>{{ m.id }}</td>
+            <td>{{ m.date_created }}</td>
+            <td>{{ m.message }}</td>
+            <td>{{ m.recepient}}</td>
+            <td>ORD-{{ m.order_id }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
