@@ -18,7 +18,6 @@ Dispatch Details
             <th>ID</th>
             <th>Date Dispatched</th>
             <th>Order No</th>
-            <th>Rider</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -26,8 +25,7 @@ Dispatch Details
             <tr>
               <td>{{ dispatch.id }}</td>
               <td>{{ dispatch.date_dispatched }}</td>
-              <td><a class="row-link" href="{% url 'order'  dispatch.order_detail.order_id %}">ORD-{{ dispatch.order_detail.order_id }}</a></td>
-              <td><a class="row-link" href="{% url 'rider-details' dispatch.order_detail.rider_id  %}">{{ dispatch.order_detail.rider_id }}</a></td>
+              <td><a class="row-link" href="{% url 'order'  dispatch.order_id %}">ORD-{{ dispatch.order_id }}</a></td>
               <td>{{ dispatch.status }}</td>
             </tr>
         </tbody>

@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView
-from django.http import HttpResponseNotFound
+from django.views.generic.edit import FormView
+from django.http import HttpResponseNotFound, HttpResponseBadRequest, HttpResponseRedirect
 
 from .models import Dispatch
-from orders.models import OrderDetails
-from .forms import DispatchForm
+from orders.models import  Rider,Order, OrderDetails
 
 from django.db import connection
+from dispatch_messages.models import DispatchMessage
 
 # Create your views here.
 
@@ -29,6 +29,7 @@ def create_dispatch_order(request,orderId):
         dispatch_details['message'] = dispatch_data[3]
         dispatch_details['rider_name'] = dispatch_data[4]
         dispatch_details['total_cost'] = dispatch_data[5]
+        dispatch_details['order_id'] = orderId
     except:
         return HttpResponseNotFound('Dispatch detailsnot found')
 
@@ -75,6 +76,26 @@ def get_dispatch_detail_data(orderId):
         row = cursor.fetchone()
     return row
 
-def dispatch_order(request):
-    pass
+class DispatchOrderView(FormView):
+    def post(self, request, *args, **kwargs):
+        try:
+            rider = request.POST['rider']
+            rider_id = int(rider)
+            message = request.POST['message']
+            total_cost = request.POST['total_cost']
+            order_id = request.POST['order_id']
+
+            full_message = message + ' - Total Cost :' + total_cost
+            rider_obj = Rider.objects.get(pk=rider_id)
+            order = Order.objects.get(pk=int(order_id))
+            dispatch = Dispatch(order=order,status = 1)
+            dispatch.save()
+            dispatch_message = DispatchMessage(message=full_message,recepient=rider_obj,order = order)
+            dispatch_message.save()
+            return HttpResponseRedirect('/orders/'+ order_id)
+        except:
+            return HttpResponseBadRequest()
+
+
+
 
