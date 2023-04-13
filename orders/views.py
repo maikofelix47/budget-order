@@ -29,7 +29,8 @@ def order_details(request,pk):
     
     return render(request,'orders/order-details.html',{
         'order_details': order_detail,
-        'order_total': order_cost
+        'order_total': order_cost,
+        'order_id': pk
     })
 
 class CreateOrderView(CreateView):

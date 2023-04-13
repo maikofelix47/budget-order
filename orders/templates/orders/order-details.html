@@ -44,13 +44,12 @@
             <td>{{ order.product.store.name }}</td>
             <td>{{ order.quantity }}</td>
             <td>{{ order.product.price }}</td>
-            <td>
-               <a class="btn btn-success">Dispatch</a>
-            </td>
+            <td></td>
          </tr>
          {% endfor %}
          <tr>
             <td>Totals</a></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -60,6 +59,7 @@
          </tr>
       </tbody>
      </table>
+     <a class="btn btn-success" href="{% url 'create-dispatch-order' order_id %}"><i class="bi bi-mailbox"></i> Dispatch Order</a>
    </div>
 </div>
 
