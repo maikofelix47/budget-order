@@ -59,7 +59,9 @@
          </tr>
       </tbody>
      </table>
-     <a class="btn btn-success" href="{% url 'create-dispatch-order' order_id %}"><i class="bi bi-mailbox"></i> Dispatch Order</a>
+     {% if dispatch_details|length > 0 %}
+     <a class="btn btn-success" href="{% url 'create-dispatch-order' order_id %}"><i class="bi bi-mailbox"></i> Dispatch Order {{ dispatch_details.status }}</a>
+     {% endif %}
    </div>
 </div>
 

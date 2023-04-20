@@ -18,10 +18,10 @@ def order_details(request,pk):
     dispatch_details = Dispatch.objects.filter(order_id=pk)
     order_total = []
     order_cost = 0
-
     try:
         order_total = get_order_total(pk)
-        order_cost = order_total[0]
+        if order_total is not None:
+            order_cost = order_total[0]
     except:
        return HttpResponseBadRequest('There is an issue with the specified order')
     
