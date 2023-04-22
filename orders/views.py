@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView,View
 from django.views.generic.edit import CreateView
 from .models import Order,OrderDetails
 from .forms import OrderForm, OrderDetailsForm
 from dispatch.models import Dispatch
 from django.db import connection
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponseBadRequest, HttpResponseRedirect
+from products.models import Product
+from riders.models import Rider
 
 # Create your views here.
 class OrdersView(ListView):
@@ -52,10 +54,30 @@ class CreateOrderView(CreateView):
     model = Order
     success_url = '/orders'
 
-class CreateOrderDetailView(CreateView):
+class CreateOrderDetailView(View):
     form_class = OrderDetailsForm
-    template_name = 'orders/create-order-detail.html'
     model = OrderDetails
-    success_url = '/orders'
+    template_name = 'orders/create-order-detail.html'
+    def get(self,request,orderId):
+        initial = {"order": orderId}
+        form = OrderDetailsForm(initial=initial)
+        return render(request,self.template_name,{
+            'form': form,
+            'order_id': orderId
+        })
+    def post(self,request,orderId):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form_details = request.POST
+            order = order = Order.objects.get(pk=orderId)
+            product = Product.objects.get(pk=int(form_details['product']))
+            rider = Rider.objects.get(pk=int(form_details['rider']))
+            order_details = OrderDetails(order=order,product=product,rider=rider,quantity=form_details['quantity'])
+            order_details.save()
+            return HttpResponseRedirect('/orders')
+        return render(request,self.template_name,{
+            'form': form,
+            'order_id': orderId
+        })
 
 

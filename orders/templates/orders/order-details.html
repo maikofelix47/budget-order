@@ -11,12 +11,7 @@
 {% block content %}
 <div class="row justify-content-md-center budget-row">
    <div class="col col-lg-10 col-sm-10 col-md-10 col-xs-12">
-      <form action="/orders/create-order-item/" method="POST">
-          {% csrf_token %}
-          <div class="form-group">
-          </div>
-          <button type="submit" class="btn btn-primary"> <i class="bi bi-file-earmark-plus"></i> Add Order item</button>
-      </form>
+          <a href="/orders/create-order-item/{{ order_id }}" class="btn btn-primary"> <i class="bi bi-file-earmark-plus"></i> Add Order item</a>
     </div>
 </div>
 <div class="row justify-content-md-center budget-row">
@@ -59,7 +54,7 @@
          </tr>
       </tbody>
      </table>
-     {% if dispatch_details|length > 0 %}
+     {% if dispatch_details|length == 0 and order_details|length > 0 %}
      <a class="btn btn-success" href="{% url 'create-dispatch-order' order_id %}"><i class="bi bi-mailbox"></i> Dispatch Order {{ dispatch_details.status }}</a>
      {% endif %}
    </div>

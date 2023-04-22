@@ -4,7 +4,7 @@
 {% block content %}
 <div class="row justify-content-md-center">
   <div class="col col-lg-8">
-    <form action="/orders/create-order-item/" method="POST">
+    <form action="/orders/create-order-item/{{order_id}}" method="POST">
         {% csrf_token %}
         <div class="form-group">
         {% for field in form %}
