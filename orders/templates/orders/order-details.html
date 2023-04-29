@@ -34,7 +34,7 @@
          <tr>
             <td>ORD-{{ order.order.id }}</a></td>
             <td>{{ order.date_created }}</td>
-            <td><a class="row-link" href="{% url 'product' order.product.id %}">{{ order.product.name }}</a></td>
+            <td><a class="row-link" href="{% url 'product' order.product.id %}">{{ order.product.name }} ({{ order.product.quantity }} {{ order.product.quantity_type}})</a></td>
             <td><a class="row-link" href="{% url 'rider-details' order.rider.id %}">{{ order.rider.id }}</a></td>
             <td>{{ order.product.store.name }}</td>
             <td>{{ order.quantity }}</td>

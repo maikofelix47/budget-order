@@ -20,7 +20,7 @@ Products
         {% for p in products %}
         <tr>
           <td>
-            <a href="{% url 'product' p.id %}" class="row-link">{{ p.name }}</a>
+            <a href="{% url 'product' p.id %}" class="row-link">{{ p.name }} - ({{p.quantity}} {{ p.quantity_type}})</a>
           </td>
           <td>{{ p.store }}</td>
         </tr>

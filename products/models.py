@@ -14,7 +14,7 @@ class QuantityType(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=10,decimal_places=2)
     quantity_type = models.ForeignKey(QuantityType,on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10,decimal_places=2)
@@ -22,4 +22,4 @@ class Product(models.Model):
     created_date = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"{self.name} - {self.store.name}"
+        return f"{self.name} - {self.store.name},{self.quantity} {self.quantity_type}"
