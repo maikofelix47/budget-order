@@ -22,4 +22,4 @@ class Product(models.Model):
     created_date = models.DateTimeField(auto_now=True)
 
     def __str__(self) -> str:
-        return f"{self.name} - {self.store.name},{self.quantity} {self.quantity_type}"
+        return f"{self.name} - {self.store.name},{self.quantity} {self.quantity_type} {self.price}"

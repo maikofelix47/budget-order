@@ -93,7 +93,7 @@ class DispatchOrderView(FormView):
             dispatch.save()
             dispatch_message = DispatchMessage(message=full_message,recepient=rider_obj,order = order)
             dispatch_message.save()
-            send_dispatch_sms(rider_obj.phone_no,full_message)
+            #send_dispatch_sms(rider_obj.phone_no,full_message)
             return HttpResponseRedirect('/orders/'+ order_id)
         except:
             return HttpResponseBadRequest()
